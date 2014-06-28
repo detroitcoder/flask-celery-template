@@ -12,7 +12,7 @@ well and I would reccomend it for others just getting into Flask and Celery.
 
 To start:
 
-    Celery run: Celery -A celeryapp worker --loglevel=info
+    Celery -A celeryapp worker --loglevel=info
     python startflask.py
     python tests.py
 
