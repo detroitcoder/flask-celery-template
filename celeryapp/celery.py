@@ -16,14 +16,14 @@ def make_celery():
                              include=['celeryapp.tasks'])
     celery_instance.config_from_object(settings.config)
 
-    # modify the TaskBase class
-    TaskBase = celery_instance.Task
-    class ContextTask(TaskBase):
-        abstract = True
-        def __call__(self, *args, **kwargs):
-            with app.app_context():
-                return TaskBase.__call__(self, *args, **kwargs)
-    celery_instance.Task = ContextTask
+    # # modify the TaskBase class
+    # TaskBase = celery_instance.Task
+    # class ContextTask(TaskBase):
+    #     abstract = True
+    #     def __call__(self, *args, **kwargs):
+    #         with app.app_context():
+    #             return TaskBase.__call__(self, *args, **kwargs)
+    # celery_instance.Task = ContextTask
     return celery_instance
 
 celery_app = make_celery()
